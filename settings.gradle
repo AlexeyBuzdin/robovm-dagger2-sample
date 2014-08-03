@@ -1,0 +1,5 @@
+include 'shared'
+include 'android-client'
+include 'ios-client'
+
+rootProject.name = 'java-mobile-archetype'
