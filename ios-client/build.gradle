@@ -1,0 +1,44 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    }
+    dependencies {
+        classpath 'com.github.jtakakura:gradle-robovm-plugin:0.0.11-SNAPSHOT'
+    }
+}
+
+apply plugin: 'robovm'
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
+ext {
+    mainClassName = "com.github.larchaon.robovm.RoboVMSampleIOSApp"
+    roboVMVersion = "0.0.15-SNAPSHOT"
+}
+
+dependencies {
+    runtime (
+        "org.robovm:robovm-rt:0.0.14",
+        "org.robovm:robovm-objc:0.0.14",
+        "org.robovm:robovm-cocoatouch:0.0.14"
+    )
+}
+
+sourceSets {
+    main {
+        allJava
+    }
+}
+
+robovm {
+    iosSignIdentity = ""
+    iosProvisioningProfile = ""
+    iosSkipSigning = true
+    stdoutFifo = "../tmp/stdout.log"
+    stderrFifo = "..//tmp/stderr.log"
+}
