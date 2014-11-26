@@ -1,44 +1,44 @@
 buildscript {
+
+    project.ext.roboVMVersion = "1.0.0-alpha-04"
+    project.ext.roboVMGradleVersion = "1.0.0-alpha-04"
+
     repositories {
+        mavenLocal()
         mavenCentral()
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     }
     dependencies {
-        classpath 'com.github.jtakakura:gradle-robovm-plugin:0.0.11-SNAPSHOT'
+        classpath group: 'org.robovm', name: 'robovm-gradle-plugin', version: project.roboVMGradleVersion
     }
 }
 
-apply plugin: 'robovm'
 apply plugin: 'java'
+apply plugin: 'robovm'
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+    }
+}
 
 repositories {
+    mavenLocal()
     mavenCentral()
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
 }
 
-ext {
-    mainClassName = "com.github.larchaon.robovm.RoboVMSampleIOSApp"
-    roboVMVersion = "0.0.15-SNAPSHOT"
-}
-
 dependencies {
-    runtime (
-        "org.robovm:robovm-rt:0.0.14",
-        "org.robovm:robovm-objc:0.0.14",
-        "org.robovm:robovm-cocoatouch:0.0.14"
-    )
-}
-
-sourceSets {
-    main {
-        allJava
-    }
+    compile group: 'org.robovm', name: 'robovm-rt', version: project.roboVMVersion
+    compile group: 'org.robovm', name: 'robovm-cocoatouch', version: project.roboVMVersion
 }
 
 robovm {
-    iosSignIdentity = ""
-    iosProvisioningProfile = ""
-    iosSkipSigning = true
-    stdoutFifo = "../tmp/stdout.log"
-    stderrFifo = "..//tmp/stderr.log"
+    // Configure robovm
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
 }

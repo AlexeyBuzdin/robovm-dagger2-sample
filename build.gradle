@@ -14,5 +14,14 @@ allprojects {
         jcenter()
         mavenLocal()
         mavenCentral()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    }
+    buildscript {
+        repositories {
+            jcenter()
+            mavenLocal()
+            mavenCentral()
+            maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+        }
     }
 }

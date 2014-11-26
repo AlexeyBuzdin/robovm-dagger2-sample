@@ -11,7 +11,7 @@ public class RoboVMSampleIOSApp extends UIApplicationDelegateAdapter {
 
     @Override
     public boolean didFinishLaunching(UIApplication application,
-                                      NSDictionary<NSString, ?> launchOptions) {
+                                      UIApplicationLaunchOptions launchOptions) {
 
         final UIButton button = UIButton.create(UIButtonType.RoundedRect);
         button.setFrame(new CGRect(115.0f, 121.0f, 91.0f, 37.0f));
@@ -25,7 +25,7 @@ public class RoboVMSampleIOSApp extends UIApplicationDelegateAdapter {
         });
 
         window = new UIWindow(UIScreen.getMainScreen().getBounds());
-        window.setBackgroundColor(UIColor.colorLightGray());
+        window.setBackgroundColor(UIColor.lightGray());
         window.addSubview(button);
         window.makeKeyAndVisible();
 
@@ -33,8 +33,8 @@ public class RoboVMSampleIOSApp extends UIApplicationDelegateAdapter {
     }
 
     public static void main(String[] args) {
-        NSAutoreleasePool pool = new NSAutoreleasePool();
-        UIApplication.main(args, null, RoboVMSampleIOSApp.class);
-        pool.close();
+        try (NSAutoreleasePool pool = new NSAutoreleasePool()) {
+            UIApplication.main(args, null, RoboVMSampleIOSApp.class);
+        }
     }
 }
