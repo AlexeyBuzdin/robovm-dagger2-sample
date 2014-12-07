@@ -24,4 +24,8 @@ allprojects {
             maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
         }
     }
+    ext {
+        roboVMVersion = '1.0.0-SNAPSHOT'
+        daggerVersion = '2.0-SNAPSHOT'
+    }
 }

@@ -1,5 +1,6 @@
 package lv.jug.byoctj.android;
 
+import lv.jug.byoctj.android.dagger.Dagger_DaggerComponent;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -11,7 +12,7 @@ public class MyActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        CoreService coreService = new CoreService();
+        CoreService coreService = Dagger_DaggerComponent.create().getCoreService();
 
         TextView textView = new TextView(this);
         textView.setText(coreService.provideString("Android"));

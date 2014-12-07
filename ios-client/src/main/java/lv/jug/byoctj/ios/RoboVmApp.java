@@ -1,5 +1,7 @@
 package lv.jug.byoctj.ios;
 
+import lv.jug.byoctj.ios.dagger.Dagger_DaggerComponent;
+import lv.jug.byoctj.ios.dagger.IOSModule;
 import lv.jug.byoctj.shared.CoreService;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.foundation.*;
@@ -7,13 +9,12 @@ import org.robovm.apple.uikit.*;
 
 public class RoboVmApp extends UIApplicationDelegateAdapter {
 
-    private int clickCount = 0;
+    CoreService service;
 
     @Override
     public boolean didFinishLaunching(UIApplication application,
                                       UIApplicationLaunchOptions launchOptions) {
-
-        CoreService service = new CoreService();
+        service = Dagger_DaggerComponent.create().getCoreService();
 
         final UIButton button = UIButton.create(UIButtonType.RoundedRect);
         button.setFrame(new CGRect(115.0f, 121.0f, 91.0f, 37.0f));

@@ -1,15 +1,11 @@
 buildscript {
-
-    project.ext.roboVMVersion = "1.0.0-alpha-04"
-    project.ext.roboVMGradleVersion = "1.0.0-alpha-04"
-
     repositories {
         mavenLocal()
         mavenCentral()
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     }
     dependencies {
-        classpath group: 'org.robovm', name: 'robovm-gradle-plugin', version: project.roboVMGradleVersion
+        classpath "org.robovm:robovm-gradle-plugin:$roboVMVersion"
     }
 }
 
@@ -19,12 +15,19 @@ apply plugin: 'robovm'
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
+configurations {
+    provided
+}
+
 sourceSets {
     main {
         java {
             srcDir 'src'
         }
     }
+    main.compileClasspath += configurations.provided
+    test.compileClasspath += configurations.provided
+    test.runtimeClasspath += configurations.provided
 }
 
 repositories {
@@ -34,15 +37,16 @@ repositories {
 }
 
 dependencies {
-    compile group: 'org.robovm', name: 'robovm-rt', version: project.roboVMVersion
-    compile group: 'org.robovm', name: 'robovm-cocoatouch', version: project.roboVMVersion
     compile project(':shared')
+
+    compile "org.robovm:robovm-rt:$roboVMVersion"
+    compile "org.robovm:robovm-cocoatouch:$roboVMVersion"
+
+    compile "com.google.dagger:dagger:$daggerVersion"
+    provided "com.google.dagger:dagger-compiler:$daggerVersion"
 }
 
-robovm {
-    // Configure robovm
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.0'
-}
+launchIPhoneSimulator.dependsOn build
+launchIPadSimulator.dependsOn build
+launchIOSDevice.dependsOn build
+createIPA.dependsOn build
