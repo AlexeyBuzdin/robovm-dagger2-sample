@@ -1,9 +1,9 @@
-package lv.jug.byoj.android;
+package lv.jug.byoctj.android;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
-import lv.jug.byojct.core.CoreService;
+import lv.jug.byoctj.shared.CoreService;
 
 public class MyActivity extends Activity {
 

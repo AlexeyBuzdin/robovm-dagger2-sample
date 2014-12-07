@@ -16,6 +16,9 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'robovm'
 
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
 sourceSets {
     main {
         java {
@@ -33,6 +36,7 @@ repositories {
 dependencies {
     compile group: 'org.robovm', name: 'robovm-rt', version: project.roboVMVersion
     compile group: 'org.robovm', name: 'robovm-cocoatouch', version: project.roboVMVersion
+    compile project(':shared')
 }
 
 robovm {

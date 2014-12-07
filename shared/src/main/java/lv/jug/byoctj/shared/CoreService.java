@@ -1,4 +1,4 @@
-package lv.jug.byojct.core;
+package lv.jug.byoctj.shared;
 
 public class CoreService {
 
