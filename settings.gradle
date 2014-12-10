@@ -1,4 +1,6 @@
-include 'shared'
+include 'shared', ':shared'
+include 'server'
+include 'shared-client'
 include 'android-client'
 include 'ios-client'
 

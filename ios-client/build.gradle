@@ -37,7 +37,7 @@ repositories {
 }
 
 dependencies {
-    compile project(':shared')
+    compile project(':shared-client')
 
     compile "org.robovm:robovm-rt:$roboVMVersion"
     compile "org.robovm:robovm-cocoatouch:$roboVMVersion"
