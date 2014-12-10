@@ -1,7 +1,10 @@
-include 'shared', ':shared'
+include 'shared'
 include 'server'
-include 'shared-client'
-include 'android-client'
-include 'ios-client'
+include 'client-shared'
+include 'client-android'
+include 'client-ios'
+include 'client-web'
 
 rootProject.name = 'java-mobile-archetype'
+include 'client-web'
+
