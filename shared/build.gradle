@@ -1,8 +1,19 @@
 apply plugin: 'java'
 
 sourceCompatibility = 1.7
-version = '1.0'
+targetCompatibility = 1.7
+
+configurations {
+    provided
+}
+
+sourceSets {
+    main.compileClasspath += configurations.provided
+    test.compileClasspath += configurations.provided
+    test.runtimeClasspath += configurations.provided
+}
 
 dependencies {
-
+    compile "com.google.dagger:dagger:$daggerVersion"
+    provided "com.google.dagger:dagger-compiler:$daggerVersion"
 }

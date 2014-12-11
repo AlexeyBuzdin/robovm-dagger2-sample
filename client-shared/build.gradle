@@ -14,5 +14,8 @@ sourceSets {
 }
 
 dependencies {
+    compile project(":shared")
+
     compile "com.google.dagger:dagger:$daggerVersion"
+    provided "com.google.dagger:dagger-compiler:$daggerVersion"
 }

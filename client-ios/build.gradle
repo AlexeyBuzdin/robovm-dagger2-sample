@@ -20,11 +20,7 @@ configurations {
 }
 
 sourceSets {
-    main {
-        java {
-            srcDir 'src'
-        }
-    }
+
     main.compileClasspath += configurations.provided
     test.compileClasspath += configurations.provided
     test.runtimeClasspath += configurations.provided

@@ -2,10 +2,21 @@ apply plugin: 'java'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
-version = '1.0'
 
+configurations {
+    provided
+}
+
+sourceSets {
+    main.compileClasspath += configurations.provided
+    test.compileClasspath += configurations.provided
+    test.runtimeClasspath += configurations.provided
+}
 
 dependencies {
     compile project(':shared')
     compile 'com.sparkjava:spark-core:2.1'
+
+    compile "com.google.dagger:dagger:$daggerVersion"
+    provided "com.google.dagger:dagger-compiler:$daggerVersion"
 }
