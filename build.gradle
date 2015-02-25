@@ -26,7 +26,7 @@ allprojects {
         }
     }
     ext {
-        roboVMVersion = '1.0.0-SNAPSHOT'
+        roboVMVersion = '1.0.0-beta-04'
         daggerVersion = '2.0-SNAPSHOT'
     }
 }

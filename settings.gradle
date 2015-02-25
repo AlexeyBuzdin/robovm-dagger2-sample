@@ -6,5 +6,4 @@ include 'client-ios'
 include 'client-web'
 
 rootProject.name = 'java-mobile-archetype'
-include 'client-web'
 
