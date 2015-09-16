@@ -19,14 +19,17 @@ sourceSets {
     }
 }
 
+configurations {
+    provided
+    provided.extendsFrom(compile)
+    compileDagger
+}
+
 idea {
     module {
         generatedSourceDirs += file('gen/dagger/java')
+        scopes.PROVIDED.plus += [configurations.provided]
     }
-}
-
-configurations {
-    compileDagger
 }
 
 compileJava {
@@ -47,6 +50,7 @@ dependencies {
     compile project(':client-shared')
 
     compile "com.google.dagger:dagger:$daggerVersion"
+    provided 'org.glassfish:javax.annotation:10.0-b28'
     compileDagger "com.google.dagger:dagger-compiler:$daggerVersion"
 
     compile "org.robovm:robovm-rt:$roboVMVersion"
