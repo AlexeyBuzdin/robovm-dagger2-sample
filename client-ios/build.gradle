@@ -1,9 +1,4 @@
 buildscript {
-    repositories {
-        mavenLocal()
-        mavenCentral()
-        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
-    }
     dependencies {
         classpath "org.robovm:robovm-gradle-plugin:$roboVMVersion"
     }
@@ -11,35 +6,51 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'robovm'
+apply plugin: 'idea'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
-configurations {
-    provided
-}
-
 sourceSets {
-
-    main.compileClasspath += configurations.provided
-    test.compileClasspath += configurations.provided
-    test.runtimeClasspath += configurations.provided
+    dagger {
+        java {
+            srcDirs = ['gen/dagger/java']
+        }
+    }
 }
 
-repositories {
-    mavenLocal()
-    mavenCentral()
-    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+idea {
+    module {
+        generatedSourceDirs += file('gen/dagger/java')
+    }
+}
+
+configurations {
+    compileDagger
+}
+
+compileJava {
+    description = "dagger annotation processor is loaded automatically from classpath"
+    sourceSets.dagger.java.srcDirs*.mkdirs()
+    classpath += configurations.compileDagger
+    options.compilerArgs += [
+            '-s', sourceSets.dagger.java.srcDirs.iterator().next()
+    ]
+}
+
+clean {
+    description = "delete files in generated source directory tree"
+    delete fileTree(dir: sourceSets.dagger.java.srcDirs.iterator().next())
 }
 
 dependencies {
     compile project(':client-shared')
 
+    compile "com.google.dagger:dagger:$daggerVersion"
+    compileDagger "com.google.dagger:dagger-compiler:$daggerVersion"
+
     compile "org.robovm:robovm-rt:$roboVMVersion"
     compile "org.robovm:robovm-cocoatouch:$roboVMVersion"
-
-    compile "com.google.dagger:dagger:$daggerVersion"
-    provided "com.google.dagger:dagger-compiler:$daggerVersion"
 }
 
 launchIPhoneSimulator.dependsOn build

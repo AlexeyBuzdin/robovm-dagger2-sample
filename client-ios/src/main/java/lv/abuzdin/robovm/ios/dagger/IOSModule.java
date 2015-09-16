@@ -1,4 +1,4 @@
-package lv.jug.byoctj.ios.dagger;
+package lv.abuzdin.robovm.ios.dagger;
 
 import dagger.Module;
 

@@ -1,10 +1,10 @@
-package lv.jug.byoctj.ios;
+package lv.abuzdin.robovm.ios;
 
-import lv.jug.byoctj.ios.dagger.Dagger_DaggerComponent;
-import lv.jug.byoctj.shared.SharedController;
-import lv.jug.byoctj.shared.domain.Payment;
-import org.robovm.apple.coregraphics.*;
-import org.robovm.apple.foundation.*;
+import lv.abuzdin.robovm.ios.dagger.DaggerDaggerComponent;
+import lv.abuzdin.robovm.shared.Payment;
+import lv.abuzdin.robovm.shared.SharedController;
+import org.robovm.apple.coregraphics.CGRect;
+import org.robovm.apple.foundation.NSAutoreleasePool;
 import org.robovm.apple.uikit.*;
 
 public class RoboVmApp extends UIApplicationDelegateAdapter {
@@ -14,7 +14,7 @@ public class RoboVmApp extends UIApplicationDelegateAdapter {
     @Override
     public boolean didFinishLaunching(UIApplication application,
                                       UIApplicationLaunchOptions launchOptions) {
-        service = Dagger_DaggerComponent.create().getCoreService();
+        service = DaggerDaggerComponent.create().getCoreService();
 
         final UIButton button = UIButton.create(UIButtonType.RoundedRect);
         button.setFrame(new CGRect(115.0f, 121.0f, 200.0f, 37.0f));

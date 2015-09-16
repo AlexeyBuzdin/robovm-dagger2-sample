@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="lv.jug.byoctj.android" >
+    package="lv.abuzdin.robovm.android" >
 
     <application
         android:allowBackup="true">
         <activity
-            android:name=".MyActivity">
+            android:name="lv.abuzdin.robovm.android.MyActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

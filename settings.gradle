@@ -1,9 +1,6 @@
-include 'shared'
-include 'server'
 include 'client-shared'
 include 'client-android'
 include 'client-ios'
-include 'client-web'
 
-rootProject.name = 'java-mobile-archetype'
+rootProject.name = 'robovm-sample'
 

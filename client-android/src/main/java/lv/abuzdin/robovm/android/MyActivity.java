@@ -1,11 +1,11 @@
-package lv.jug.byoctj.android;
+package lv.abuzdin.robovm.android;
 
-import lv.jug.byoctj.android.dagger.Dagger_DaggerComponent;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
-import lv.jug.byoctj.shared.SharedController;
-import lv.jug.byoctj.shared.domain.Payment;
+import lv.abuzdin.robovm.android.dagger.DaggerMainComponent;
+import lv.abuzdin.robovm.shared.Payment;
+import lv.abuzdin.robovm.shared.SharedController;
 
 public class MyActivity extends Activity {
 
@@ -13,7 +13,7 @@ public class MyActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SharedController controller = Dagger_DaggerComponent.create().getSharedController();
+        SharedController controller = DaggerMainComponent.create().getSharedController();
 
         TextView textView = new TextView(this);
         textView.setText(controller.checkPayment(new Payment()));

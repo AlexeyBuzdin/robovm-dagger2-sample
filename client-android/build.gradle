@@ -1,3 +1,10 @@
+buildscript {
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.1.1'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.7'
+    }
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 
@@ -19,7 +26,6 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':client-shared')
 
     apt "com.google.dagger:dagger-compiler:$daggerVersion"

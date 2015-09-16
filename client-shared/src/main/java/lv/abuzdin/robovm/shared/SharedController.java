@@ -1,7 +1,4 @@
-package lv.jug.byoctj.shared;
-
-import lv.jug.byoctj.shared.domain.Payment;
-import lv.jug.byoctj.shared.validator.PaymentValidator;
+package lv.abuzdin.robovm.shared;
 
 import javax.inject.Inject;
 

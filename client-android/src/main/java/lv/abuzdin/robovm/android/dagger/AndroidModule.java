@@ -1,4 +1,4 @@
-package lv.jug.byoctj.android.dagger;
+package lv.abuzdin.robovm.android.dagger;
 
 import dagger.Module;
 
